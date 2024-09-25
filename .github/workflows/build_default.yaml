@@ -18,11 +18,5 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
 
-    - name: Synching fork
-      run: git clone https://github.com/NixOS/nixpkgs    
-
-    - name: building icosa
-      run: |
-          cd nixpkgs/ 
-          sed -i 's|enableHttp ? false|enableHttp ? true|g' pkgs/development/libraries/libxml2/default.nix
-          nix-shell -I nixpkgs=. -p R rPackages.icosa 
+    - run: nix-build
+    - run: nix-shell --run "echo OK"
