@@ -1,7 +1,5 @@
 let
- pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/heads/master.tar.gz") {
-   overlays = [(_: super: {libxml2 = super.libxml2.override {enableHttp=false;};})];
- };
+ pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/heads/master.tar.gz") {};
  
   rpkgs = builtins.attrValues {
     inherit (pkgs.rPackages) 
